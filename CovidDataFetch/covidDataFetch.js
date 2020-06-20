@@ -2,10 +2,9 @@ const fetch = require('node-fetch');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-fetchCovidData();
 
 // covid data format
-const READ_ONLY__COVID_DATA = {
+const READ_ONLY_COVID_DATA = {
   total: {
     punjab: { cases: 0 },
     sindh: { cases: 0 },

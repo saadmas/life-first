@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-
 // covid data format
 const READ_ONLY_COVID_DATA = {
   total: {
@@ -21,7 +20,7 @@ const READ_ONLY_COVID_DATA = {
   }
 };
 
-async function fetchCovidData() {
+export async function fetchCovidData() {
   const response = await fetch('https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data/Pakistan_medical_cases');
   const text = await response.text();
   const { document } = new JSDOM(text).window;

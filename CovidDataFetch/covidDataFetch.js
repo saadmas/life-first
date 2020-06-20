@@ -20,7 +20,7 @@ const READ_ONLY_COVID_DATA = {
   }
 };
 
-export async function fetchCovidData() {
+async function fetchCovidData() {
   const response = await fetch('https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data/Pakistan_medical_cases');
   const text = await response.text();
   const { document } = new JSDOM(text).window;

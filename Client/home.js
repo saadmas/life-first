@@ -11,5 +11,5 @@ async function updateDonationData() {
   const donationData = await getDonationData();
   const roundedDonationData = Math.round(donationData);
   $w('#progressBar1').value = donationData;
-  $w('#text24').text = `$ ${roundedDonationData} raised of $50,000`;
+  $w('#text24').text = `$${roundedDonationData} raised of $50,000`;
 }

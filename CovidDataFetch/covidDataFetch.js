@@ -78,3 +78,5 @@ function getProvincesData(totalCountCells) {
 function getCaseCount(cell) {
   return cell.textContent.trim();
 }
+
+module.exports = { fetchCovidData };

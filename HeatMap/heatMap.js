@@ -1,5 +1,8 @@
 //const getCovidData = require('../CovidDataFetch/covidDataFetch.js');
 
+var tempX = 0;
+var tempY = 0;
+
 // async function getPakData() {
 //      const pakCovidData = await getCovidData.fetchCovidData();
 //      return pakCovidData;
@@ -44,8 +47,11 @@ function updateHeatMap() {
     $(document).ready(onReady);
 }
 
+
 function onReady() {
     fillProvinceColors();
+    addMouseOvers();
+    addMouseOuts();
 }
 
 function fillProvinceColors() {
@@ -57,6 +63,42 @@ function fillProvinceColors() {
     $("#PK-PB").css("fill", getColorByLocation(66943));
     $("#PK-SD").css("fill", getColorByLocation(69628));
     $("#PK-TA").css("fill", getColorByLocation(21997));
+}
+
+function addMouseOvers() {
+    $("#PK-BA").mouseover((e) => displayProvinceStates('Balochistan', 9475, e));
+    $("#PK-GB").mouseover((e) => displayProvinceStates('Gilgit-Baltistan', 1288, e));
+    $("#PK-IS").mouseover((e) => displayProvinceStates('Islamabad', 10912, e));
+    $("#PK-JK").mouseover((e) => displayProvinceStates('Azad Kashmir', 845, e));
+    $("#PK-KP").mouseover((e) => displayProvinceStates('Khyber Pakhtunkhwa	', 21997, e));
+    $("#PK-PB").mouseover((e) => displayProvinceStates('Punjab', 66943, e));
+    $("#PK-SD").mouseover((e) => displayProvinceStates('Sindh', 69628, e));
+    $("#PK-TA").mouseover((e) => displayProvinceStates('Federally Administered Tribal Areas', 21997, e));
+}
+
+function addMouseOuts() {
+    // $("#PK-BA").mouseover(hideTooltip);
+    // $("#PK-GB").mouseover(hideTooltip);
+    // $("#PK-IS").mouseover(hideTooltip);
+    // $("#PK-JK").mouseover(hideTooltip);
+    // $("#PK-KP").mouseover(hideTooltip);
+    // $("#PK-PB").mouseover(hideTooltip);
+    // $("#PK-SD").mouseover(hideTooltip);
+    // $("#PK-TA").mouseover(hideTooltip);
+}
+
+function hideTooltip() {
+    $("#province-stats").hide();
+}
+
+function displayProvinceStates(province, cases, e) {
+    document.getElementById('province-stats').firstChild.data = `${province}: ${cases} cases`;
+
+    $("#province-stats").css({
+        top: (e.pageY) + "px",
+        left: (e.pageX) + "px"
+    });
+    $("#province-stats").show();
 }
 
 //Actual function that will update heat map based on live data

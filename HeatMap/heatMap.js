@@ -1,7 +1,6 @@
 //const getCovidData = require('../CovidDataFetch/covidDataFetch.js');
 
-var tempX = 0;
-var tempY = 0;
+updateHeatMap();
 
 // async function getPakData() {
 //      const pakCovidData = await getCovidData.fetchCovidData();
@@ -47,7 +46,6 @@ function updateHeatMap() {
     $(document).ready(onReady);
 }
 
-
 function onReady() {
     fillProvinceColors();
     addMouseOvers();
@@ -66,39 +64,41 @@ function fillProvinceColors() {
 }
 
 function addMouseOvers() {
-    $("#PK-BA").mouseover((e) => displayProvinceStates('Balochistan', 9475, e));
-    $("#PK-GB").mouseover((e) => displayProvinceStates('Gilgit-Baltistan', 1288, e));
-    $("#PK-IS").mouseover((e) => displayProvinceStates('Islamabad', 10912, e));
-    $("#PK-JK").mouseover((e) => displayProvinceStates('Azad Kashmir', 845, e));
-    $("#PK-KP").mouseover((e) => displayProvinceStates('Khyber Pakhtunkhwa	', 21997, e));
-    $("#PK-PB").mouseover((e) => displayProvinceStates('Punjab', 66943, e));
-    $("#PK-SD").mouseover((e) => displayProvinceStates('Sindh', 69628, e));
-    $("#PK-TA").mouseover((e) => displayProvinceStates('Federally Administered Tribal Areas', 21997, e));
+    $("#PK-BA").mousemove((e) => displayProvinceTooltip('Balochistan', 9475, e));
+    $("#PK-GB").mousemove((e) => displayProvinceTooltip('Gilgit-Baltistan', 1288, e));
+    $("#PK-IS").mousemove((e) => displayProvinceTooltip('Islamabad', 10912, e));
+    $("#PK-JK").mousemove((e) => displayProvinceTooltip('Azad Kashmir', 845, e));
+    $("#PK-KP").mousemove((e) => displayProvinceTooltip('Khyber Pakhtunkhwa	', 21997, e));
+    $("#PK-PB").mousemove((e) => displayProvinceTooltip('Punjab', 66943, e));
+    $("#PK-SD").mousemove((e) => displayProvinceTooltip('Sindh', 69628, e));
+    $("#PK-TA").mousemove((e) => displayProvinceTooltip('Khyber Pakhtunkhwa', 21997, e));
 }
 
 function addMouseOuts() {
-    // $("#PK-BA").mouseover(hideTooltip);
-    // $("#PK-GB").mouseover(hideTooltip);
-    // $("#PK-IS").mouseover(hideTooltip);
-    // $("#PK-JK").mouseover(hideTooltip);
-    // $("#PK-KP").mouseover(hideTooltip);
-    // $("#PK-PB").mouseover(hideTooltip);
-    // $("#PK-SD").mouseover(hideTooltip);
-    // $("#PK-TA").mouseover(hideTooltip);
+    $("#PK-BA").mouseout(hideTooltip);
+    $("#PK-GB").mouseout(hideTooltip);
+    $("#PK-IS").mouseout(hideTooltip);
+    $("#PK-JK").mouseout(hideTooltip);
+    $("#PK-KP").mouseout(hideTooltip);
+    $("#PK-PB").mouseout(hideTooltip);
+    $("#PK-SD").mouseout(hideTooltip);
+    $("#PK-TA").mouseout(hideTooltip);
 }
 
-function hideTooltip() {
-    $("#province-stats").hide();
+function hideTooltip(e) {
+    $(".province-tooltip").hide();
 }
 
-function displayProvinceStates(province, cases, e) {
-    document.getElementById('province-stats').firstChild.data = `${province}: ${cases} cases`;
+function displayProvinceTooltip(province, cases, e) {
+    $('.province-tooltip-name').text(province);
+    $('.province-tooltip-cases').text(`${cases} cases`);
 
-    $("#province-stats").css({
-        top: (e.pageY) + "px",
-        left: (e.pageX) + "px"
+    $(".province-tooltip").css({
+        top: (e.pageY - 80) + "px",
+        left: (e.pageX - 30) + "px"
     });
-    $("#province-stats").show();
+
+    $(".province-tooltip").show();
 }
 
 //Actual function that will update heat map based on live data
@@ -115,5 +115,3 @@ function displayProvinceStates(province, cases, e) {
 //         $("#PK-TA").css("fill", await getColorByLocation("kp"));
 //     });
 // }
-
-updateHeatMap();

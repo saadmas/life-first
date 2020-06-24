@@ -1,18 +1,31 @@
 body {
   color: #ff0000;
-  background-color: black;
+  background-color: #111111;
 }
 
 .heat-map {
   fill: white;
 }
 
-.hidepopUp{
-  display: block;
-  padding: 7px;
-  background-color: black;
-  color: white;
-  width: 300px;
-  position:absolute;
+.province-tooltip {
+  display: none;
+  text-align: center;
+  padding: 4px;
+  background-color: #121212;
+  color: #e5e2e2;
+  border: 1px solid #e5e2e2;
+  width: 120px;
+  height: 55px;
+  position: absolute;
   z-index: 999;
+  pointer-events: none;
+}
+
+.province-tooltip > div {
+  margin-top: 4px;
+}
+
+.province-tooltip-name {
+  font-size: 13px;
+  font-weight: bold;
 }

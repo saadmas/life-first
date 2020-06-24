@@ -21,13 +21,13 @@
 
 //Temporary function used to get color using current data
 function getColorByLocation(currentLocationData) {
-    const ratio = currentLocationData/181088;
+    const ratio = currentLocationData / 181088;
     const color = colorShade(ratio);
     return color;
 }
 
 function colorShade(ratio) {
-    switch(true) {
+    switch (true) {
         case (ratio >= 0.3):
             return "#ff0000";
         case (ratio >= 0.2):
@@ -39,21 +39,25 @@ function colorShade(ratio) {
     }
 }
 
-
 //Temporary function to update heat map based on current data
 function updateHeatMap() {
-    $(document).ready(function() {
-        $("#PK-BA").css("fill", getColorByLocation(9475));
-        $("#PK-GB").css("fill", getColorByLocation(1288));
-        $("#PK-IS").css("fill", getColorByLocation(10912));
-        $("#PK-JK").css("fill", getColorByLocation(845));
-        $("#PK-KP").css("fill", getColorByLocation(21997));
-        $("#PK-PB").css("fill", getColorByLocation(66943));
-        $("#PK-SD").css("fill", getColorByLocation(69628));
-        $("#PK-TA").css("fill", getColorByLocation(21997));
-    });
+    $(document).ready(onReady);
 }
 
+function onReady() {
+    fillProvinceColors();
+}
+
+function fillProvinceColors() {
+    $("#PK-BA").css("fill", getColorByLocation(9475));
+    $("#PK-GB").css("fill", getColorByLocation(1288));
+    $("#PK-IS").css("fill", getColorByLocation(10912));
+    $("#PK-JK").css("fill", getColorByLocation(845));
+    $("#PK-KP").css("fill", getColorByLocation(21997));
+    $("#PK-PB").css("fill", getColorByLocation(66943));
+    $("#PK-SD").css("fill", getColorByLocation(69628));
+    $("#PK-TA").css("fill", getColorByLocation(21997));
+}
 
 //Actual function that will update heat map based on live data
 

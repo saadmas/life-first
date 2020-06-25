@@ -7,11 +7,15 @@ body {
   fill: white;
 }
 
+path:hover {
+  opacity: 0.5;
+}
+
 .province-tooltip {
   display: none;
   text-align: center;
   padding: 4px;
-  background-color: #121212;
+  background-color: #3f3b3b;
   color: #e5e2e2;
   border: 1px solid #e5e2e2;
   width: 120px;

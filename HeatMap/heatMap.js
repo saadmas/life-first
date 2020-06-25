@@ -91,7 +91,7 @@ function hideTooltip(e) {
 
 function displayProvinceTooltip(province, cases, e) {
     $('.province-tooltip-name').text(province);
-    $('.province-tooltip-cases').text(`${cases} cases`);
+    $('.province-tooltip-cases').text(`${getNumberWithCommas(cases)} cases`);
 
     $(".province-tooltip").css({
         top: (e.pageY - 80) + "px",
@@ -100,6 +100,20 @@ function displayProvinceTooltip(province, cases, e) {
 
     $(".province-tooltip").show();
 }
+
+function getNumberWithCommas(num) {
+    if (!num) {
+        return '0';
+    }
+
+    if (num.toString().length < 5) {
+        return num.toString();
+
+    }
+
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 //Actual function that will update heat map based on live data
 

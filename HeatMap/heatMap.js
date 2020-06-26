@@ -30,14 +30,20 @@ function getColorByLocation(currentLocationData) {
 
 function colorShade(ratio) {
     switch (true) {
+        case (ratio >= 0.35):
+            return "#800000";
         case (ratio >= 0.3):
-            return "#ff0000";
+            return "#B30000";
+        case (ratio >= 0.25):
+            return "#D21616";
         case (ratio >= 0.2):
-            return "#ff4d4d";
+            return "#E84040";
+        case (ratio >= 0.15):
+            return "#E14848";
         case (ratio >= 0.1):
-            return "#ff8080";
+            return "#FF6666";
         default:
-            return "#ffb3b3";
+            return "#FF9999";
     }
 }
 

@@ -13,13 +13,12 @@ path:hover {
 
 .province-tooltip {
   display: none;
-  text-align: center;
-  padding: 4px;
+  padding: 4px 5px;
   background-color: #3f3b3b;
   color: #e5e2e2;
   border: 1px solid #e5e2e2;
-  width: 120px;
-  height: 55px;
+  width: 200px;
+  height: 80px;
   position: absolute;
   z-index: 999;
   pointer-events: none;
@@ -30,6 +29,6 @@ path:hover {
 }
 
 .province-tooltip-name {
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
 }
